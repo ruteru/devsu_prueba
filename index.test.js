@@ -1,4 +1,4 @@
-import { app, server } from '.'
+import { startServer } from '.'
 import request from 'supertest'
 import User from './users/model.js'
 import sequelize from './shared/database/database'
@@ -24,6 +24,7 @@ describe('User', () => {
             models: [__dirname + '/models'],
         })
         await mockedSequelize.sync({ force: true })
+        server = startServer()
     })
 
     afterEach(async () => {
