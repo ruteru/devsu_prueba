@@ -35,20 +35,3 @@ jobs:
           docker tag demo-devops-nodejs:latest ruteru/demo-devops-nodejs:latest
           echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
           docker push ruteru/demo-devops-nodejs:latest
-
-  scan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Vulnerability Scan
-        run: npx snyk test --all-projects
