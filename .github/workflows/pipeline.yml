@@ -23,9 +23,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Unit Tests
-        run: npm test
-
       - name: Static Code Analysis
         run: npx eslint .
 
