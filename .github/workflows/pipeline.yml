@@ -45,5 +45,4 @@ jobs:
 
       - name: Check availability
         run: |
-          kubectl service list
           minikube service --all
