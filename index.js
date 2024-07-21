@@ -5,8 +5,15 @@ import express from 'express'
 const app = express()
 const PORT = 8000
 
-sequelize.sync({ force: true }).then(() => console.log('db is ready'))
-
+(async () => {
+    try {
+      await sequelize.sync({ force: true });
+      console.log('db is ready');
+    } catch (error) {
+      console.error('Error syncing database:', error);
+    }
+  })();
+  
 app.use(express.json())
 app.use('/api/users', usersRouter)
 
