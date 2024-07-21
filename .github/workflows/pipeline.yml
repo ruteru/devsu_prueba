@@ -36,10 +36,10 @@ jobs:
           echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
           docker push ruteru/demo-devops-nodejs:latest
       
-       - name: Set up Kubectl
-        uses: azure/setup-kubectl@v3
-        with:
-          version: 'v1.30.0'
+      - name: Set up Kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: 'v1.30.0'
 
       - name: Set up Minikube
         uses: manusa/actions-setup-minikube@v2.4.0
