@@ -29,31 +29,26 @@ jobs:
       - name: Build Docker Image
         run: |
           docker build -t demo-devops-nodejs .
-
+      
       - name: Push Docker Image
         run: |
           docker tag demo-devops-nodejs:latest ruteru/demo-devops-nodejs:latest
           echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
           docker push ruteru/demo-devops-nodejs:latest
 
-      - name: Set up Minikube
-        uses: manusa/actions-setup-minikube@v2
-        with:
-          minikube version: 'latest'
-          kubernetes version: 'v1.20.0'
-          driver: 'docker'
-
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v2
+      - name: Set up Kubectl
+        uses: azure/setup-kubectl@v3
         with:
           version: 'latest'
 
-      - name: Apply Kubernetes Manifests
+      - name: Set up Minikube
+        uses: manusa/actions-setup-minikube@v2.7.1
+        with:
+          minikube version: 'latest'
+          kubernetes version: 'latest'
+        
+      - name: Deploy to Kubernetes
         run: |
           kubectl apply -f deployment.yaml
           kubectl apply -f service.yaml
           kubectl apply -f ingress.yaml
-
-      - name: Verify Deployment
-        run: |
-          kubectl rollout status deployment/demo-devops-nodejs
