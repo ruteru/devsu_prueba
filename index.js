@@ -2,7 +2,7 @@ import sequelize from './shared/database/database.js'
 import { usersRouter } from "./users/router.js"
 import express from 'express'
 
-export const app = express()
+const app = express();
 
 (async () => {
     try {
@@ -20,4 +20,4 @@ const server = app.listen(8000, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-export { server }
+export { app, server }
