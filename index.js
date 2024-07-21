@@ -17,7 +17,7 @@ app.use(express.json())
 app.use('/api/users', usersRouter)
 
 const server = app.listen(8000, '0.0.0.0', () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port 8000`);
 });
 
 export { app, server }
