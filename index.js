@@ -2,7 +2,7 @@ import sequelize from './shared/database/database.js'
 import { usersRouter } from "./users/router.js"
 import express from 'express'
 
-const app = express()
+export const app = express()
 
 (async () => {
     try {
