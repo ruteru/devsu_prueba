@@ -25,7 +25,10 @@ jobs:
 
       - name: Unit test
         run: npm run test
-        
+      
+      - name: Static Code Analysis
+        run: npm run lint
+
       - name: Code Coverage
         run: npx nyc npm test
 
