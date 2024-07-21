@@ -5,6 +5,7 @@ This repository contains a Node.js application that has been dockerized and depl
 ## Dockerization
 
 The application has been dockerized with the following improvements:
+
 - Non-root user execution
 - Port exposure
 - Healthcheck
@@ -12,6 +13,7 @@ The application has been dockerized with the following improvements:
 ## Deployment
 
 The application is deployed to a local Kubernetes cluster using Minikube. The deployment configuration includes:
+
 - 2 replicas
 - Readiness and liveness probes
 - Service of type NodePort
@@ -20,6 +22,7 @@ The application is deployed to a local Kubernetes cluster using Minikube. The de
 ## CI/CD Pipeline
 
 The CI/CD pipeline includes the following steps:
+
 - Code Build
 - Unit Tests
 - Static Code Analysis
@@ -30,18 +33,20 @@ The CI/CD pipeline includes the following steps:
 ## How to run
 
 1. Start Minikube:
-    ```sh
-    minikube start
-    ```
+
+   ```sh
+   minikube start
+   ```
 
 2. Deploy the application:
-    ```sh
-    kubectl apply -f deployment.yaml
-    kubectl apply -f service.yaml
-    kubectl apply -f ingress.yaml
-    ```
+
+   ```sh
+   kubectl apply -f deployment.yaml
+   kubectl apply -f service.yaml
+   kubectl apply -f ingress.yaml
+   ```
 
 3. Access the application:
-    ```sh
-    minikube service --all
-    ```
+   ```sh
+   minikube service --all
+   ```
