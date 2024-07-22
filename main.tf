@@ -2,6 +2,10 @@ provider "azurerm" {
   features {}
 }
 
+provider "kubernetes" {
+  config_path = "~/.kube/config"
+}
+
 resource "azurerm_resource_group" "main" {
   name     = var.resource_group_name
   location = var.location
@@ -48,8 +52,8 @@ resource "kubernetes_secret" "acr_secret" {
     ".dockerconfigjson" = base64encode(jsonencode({
       auths = {
         "${azurerm_container_registry.acr.login_server}" = {
-          username = azurerm_container_registry.acr.admin_username
-          password = azurerm_container_registry.acr.admin_password
+          username = var.acr_username
+          password = var.acr_password
         }
       }
     }))
@@ -65,7 +69,7 @@ variable "resource_group_name" {
 
 variable "location" {
   type        = string
-  default     = "eastus"
+  default     = "westus"
 }
 
 variable "aks_cluster_name" {
@@ -76,6 +80,15 @@ variable "aks_cluster_name" {
 variable "acr_name" {
   type        = string
   default     = "devsudemoregistry"
+}
+
+variable "acr_username" {
+  type        = string
+}
+
+variable "acr_password" {
+  type        = string
+  sensitive   = true
 }
 
 output "kubernetes_cluster_name" {
