@@ -3,6 +3,7 @@
 This repository contains a Node.js application that has been dockerized and deployed to both a local Kubernetes cluster using Minikube and a public cloud environment using Azure. The CI/CD pipeline is configured using GitHub Actions.
 
 [Cloud Diagram](diagram.png)
+[App Running Locally](Screenshot%202024-07-22%20010344.png)
 
 ## Dockerization
 
