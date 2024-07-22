@@ -69,6 +69,27 @@ The CI/CD pipeline is configured to automate the deployment process. It includes
    minikube service --all
    ```
 
-#### Access the application:
+### Using Terraform
 
-Find the public endpoint of the application via the Azure Portal or by using Azure CLI commands to get the Ingress URL or Public IP. [Access Application]()
+To deploy the application using Terraform, follow these steps:
+
+1. **Initialize Terraform:**
+
+   ```sh
+   terraform init
+   ```
+
+2. **Apply the Configuration:**
+
+   ```sh
+   terraform apply
+   ```
+
+3. **Introduce ACR Password and Username:**
+
+   During the deployment process, you will be prompted to enter the ACR password and username. This information is required to authenticate and push the Docker image to the Azure Container Registry (ACR).
+
+   The Terraform configuration will:
+
+   - Build the Docker image
+   - Create Kubernetes Deployment, Service, and Ingress resources
